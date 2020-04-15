@@ -1,0 +1,83 @@
+# Rock-paper-scissors-lizard-Spock template
+
+
+# The key idea of this program is to equate the strings
+# "rock", "paper", "scissors", "lizard", "Spock" to numbers
+# as follows:
+#
+# 0 - rock
+# 1 - Spock
+# 2 - paper
+# 3 - lizard
+# 4 - scissors
+
+# helper functions
+
+# Convert string to number based on the above logic
+
+def name_to_number(name):
+    if name == "rock":
+        name = 0
+    elif name == "Spock":
+        name = 1
+    elif name == "paper":
+        name = 2
+    elif name == "lizard":
+        name = 3
+    elif name == "scissors":
+        name = 4
+    else: 
+        print "Input is invalid."
+    return name
+
+# Convert number to string based on the above logic
+    
+def number_to_name(number):
+    if number == 0:
+        number = "rock"
+    elif number == 1:
+        number = "Spock"
+    elif number == 2:
+        number = "paper"
+    elif number == 3:
+        number = "lizard"
+    elif number == 4:
+        number = "scissors"
+    else: 
+        print "Input is invalid."
+    return number
+
+import random
+
+# This function is formulated based on the logic that the numerical difference between 
+# player's choice and computer's choice only ranges from -4 to 4 (player - computer)
+# Within that range, if the difference is less than -2, the player wins.
+# When the difference is either -2 or -1, the player loses.
+# When the difference is 0, obviously it's a tie game.
+# When the difference is either 1 or 2, the play wins.
+# Anything beyond 2 means that the player loses.
+# Again, a player's choice wins to 2 options before it and loses to 2 after it.
+
+def rpsls(player_choice): 
+    print "Player has chosen " + player_choice + "."
+    computer_choice = random.randrange(0, 5)  # the range has to be 0 to 5 to cover up to 4
+    print "Computer has chosen " + number_to_name(computer_choice)  + "."
+    score = name_to_number(player_choice) - computer_choice
+    if score < -2:
+        print "Player wins!" 
+    elif score < 0 and score >= -2:
+        print "Computer wins!"
+    elif score > 0 and score <= 2:
+        print "Player wins!"
+    elif score > 2:
+        print "Computer wins!"
+    else:
+        print "Player and computer tie!"
+    print " "
+    
+# test your code - THESE CALLS MUST BE PRESENT IN YOUR SUBMITTED CODE
+rpsls("rock")
+rpsls("Spock")
+rpsls("paper")
+rpsls("lizard")
+rpsls("scissors")
